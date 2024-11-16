@@ -1,0 +1,29 @@
+﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=f5862a69_002D3f2e_002D4da9_002Db174_002D872ebdae508b/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="Resize" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+  &lt;TestAncestor&gt;&#xD;
+    &lt;TestId&gt;GTest::B678965F-B584-486F-A48C-B41CCDBAAFF1::Windows,Version=v10.0.22621::Size.Resize&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;GTest::B678965F-B584-486F-A48C-B41CCDBAAFF1::Windows,Version=v10.0.22621::Insert.InsertTest02&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;GTest::B678965F-B584-486F-A48C-B41CCDBAAFF1::Windows,Version=v10.0.22621::Insert.InsertTest01&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;GTest::B678965F-B584-486F-A48C-B41CCDBAAFF1::Windows,Version=v10.0.22621::Remove.RemoveAt&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;GTest::B678965F-B584-486F-A48C-B41CCDBAAFF1::Windows,Version=v10.0.22621::Size.SizeAfterRemove&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;GTest::B678965F-B584-486F-A48C-B41CCDBAAFF1::Windows,Version=v10.0.22621::Size.InitialSize&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;GTest::B678965F-B584-486F-A48C-B41CCDBAAFF1::Windows,Version=v10.0.22621::Size.IncreasingSize&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;GTest::B678965F-B584-486F-A48C-B41CCDBAAFF1::Windows,Version=v10.0.22621::Iterator.IteratorCreation&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;GTest::B678965F-B584-486F-A48C-B41CCDBAAFF1::Windows,Version=v10.0.22621::Iterator.IteratorSet&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;GTest::B678965F-B584-486F-A48C-B41CCDBAAFF1::Windows,Version=v10.0.22621::ReverseIterator.IteratorEqualsArray&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;GTest::B678965F-B584-486F-A48C-B41CCDBAAFF1::Windows,Version=v10.0.22621::ReverseIterator.IteratorSet&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;GTest::B678965F-B584-486F-A48C-B41CCDBAAFF1::Windows,Version=v10.0.22621::ConstIterator.IteratorEqualsArray&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;GTest::B678965F-B584-486F-A48C-B41CCDBAAFF1::Windows,Version=v10.0.22621::ConstIterator.IteratorSet&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;GTest::B678965F-B584-486F-A48C-B41CCDBAAFF1::Windows,Version=v10.0.22621::ReverseConstIterator.IteratorEqualsArray&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;GTest::B678965F-B584-486F-A48C-B41CCDBAAFF1::Windows,Version=v10.0.22621::Iterator.IncrementOverload&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;GTest::B678965F-B584-486F-A48C-B41CCDBAAFF1::Windows,Version=v10.0.22621::Iterator.PointerOverload&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;GTest::B678965F-B584-486F-A48C-B41CCDBAAFF1::Windows,Version=v10.0.22621::ReverseIterator.IncrementOverload&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;GTest::B678965F-B584-486F-A48C-B41CCDBAAFF1::Windows,Version=v10.0.22621::ReverseIterator.PointerOverload&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;GTest::B678965F-B584-486F-A48C-B41CCDBAAFF1::Windows,Version=v10.0.22621::ConstIterator.IncrementOverload&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;GTest::B678965F-B584-486F-A48C-B41CCDBAAFF1::Windows,Version=v10.0.22621::ReverseConstIterator.IncrementOverload&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;GTest::B678965F-B584-486F-A48C-B41CCDBAAFF1::Windows,Version=v10.0.22621::ReverseConstIterator.PointerOverload&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;GTest::B678965F-B584-486F-A48C-B41CCDBAAFF1::Windows,Version=v10.0.22621::Iterator.BeginEnd&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;GTest::B678965F-B584-486F-A48C-B41CCDBAAFF1::Windows,Version=v10.0.22621::Iterator.IteratorEqualsArray&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;GTest::B678965F-B584-486F-A48C-B41CCDBAAFF1::Windows,Version=v10.0.22621::Destructor.&lt;/TestId&gt;&#xD;
+  &lt;/TestAncestor&gt;&#xD;
+&lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>
