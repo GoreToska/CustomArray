@@ -2,26 +2,6 @@
 
 #include "Classes/CustomArray.hpp"
 
-
-class Example
-{
-public:
-    char* symbol;
-    int i;
-
-    Example(int i): i(i)
-    {
-        symbol = static_cast<char*>(malloc(1 * sizeof(char)));
-        symbol[0] = 'a';
-    }
-
-    ~Example()
-    {
-        std::cout << "\nDestructor! " << i;
-        free(symbol);
-    }
-};
-
 int main()
 {
     array<int> test_array;

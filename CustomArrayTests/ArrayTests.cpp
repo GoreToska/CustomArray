@@ -7,14 +7,13 @@ TEST(Insert, InsertTest01)
     array<int> test_array;
     for (int i = 0; i < 8; i++)
     {
-        test_array.insert(i);
+        test_array.insert(i); // 0 1 2 3 4 5 6 7
     }
 
     for (int i = 0; i < 8; i++)
     {
-        EXPECT_EQ(test_array[i], i);
+        EXPECT_EQ(test_array[i], i); // 0 1 2 3 4 10 5 6 7
     }
-    
     
     test_array.insert(5, 10);
 
@@ -27,40 +26,6 @@ TEST(Insert, InsertTest01)
     EXPECT_EQ(test_array[6], 5);
     EXPECT_EQ(test_array[7], 6);
     EXPECT_EQ(test_array[8], 7);
-}
-
-TEST(Destructor)
-{
-    {
-        array<test_class> test_array;
-        test_class test01{};
-        test_class test02{};
-        test_array.insert(test01);
-        test_array.insert(test02);
-    }
-    EXPECT_NO_THROW();
-
-    {
-        array<test_class> test_array;
-        {
-            test_class test01{};
-            test_class test02{};
-            test_array.insert(test01);
-            test_array.insert(test02);
-        }
-    }
-    EXPECT_NO_THROW();
-
-    {
-        test_class test01{};
-        test_class test02{};
-        {
-            array<test_class> test_array;
-            test_array.insert(test01);
-            test_array.insert(test02);
-        }
-    }
-    EXPECT_NO_THROW();
 }
 
 TEST(Remove, RemoveAt)
@@ -362,4 +327,38 @@ TEST(Iterator, BeginEnd)
     }
 
     EXPECT_EQ(test_array.size(), i);
+}
+
+TEST(Destructor)
+{
+    {
+        array<test_class> test_array;
+        test_class test01{};
+        test_class test02{};
+        test_array.insert(test01);
+        test_array.insert(test02);
+    }
+    EXPECT_NO_THROW();
+
+    {
+        array<test_class> test_array;
+        {
+            test_class test01{};
+            test_class test02{};
+            test_array.insert(test01);
+            test_array.insert(test02);
+        }
+    }
+    EXPECT_NO_THROW();
+
+    {
+        test_class test01{};
+        test_class test02{};
+        {
+            array<test_class> test_array;
+            test_array.insert(test01);
+            test_array.insert(test02);
+        }
+    }
+    EXPECT_NO_THROW();
 }
