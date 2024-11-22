@@ -1,5 +1,7 @@
 ﻿#pragma once
 
+#include <assert.h>
+
 #include "CustomArray.h"
 
 template <typename T>
@@ -57,6 +59,7 @@ template <typename T>
 int array<T>::insert(const T& value)
 {
     capacity_check();
+    assert(capacity_>=size_);
     new(data_ptr_ + size_) T(value);
 
     return size_++;
@@ -65,6 +68,7 @@ int array<T>::insert(const T& value)
 template <typename T>
 int array<T>::insert(int index, const T& value)
 {
+    assert(index <= size_);
     insert(value);
 
     for (size_t i = index; i < size_; ++i)

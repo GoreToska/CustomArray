@@ -5,20 +5,21 @@
 int main()
 {
     array<int> test_array;
+    test_array.insert(0, 10);
 
-    for (int i = 0; i < 20; ++i)
+    for (int i = 1; i < 20; ++i)
     {
-        std::cout << test_array.insert(i) << std::endl;
+        test_array.insert(i);
     }
 
     for (auto iterator = test_array.get_iterator(); iterator.has_next(); ++iterator)
     {
-        std::cout << iterator.get() << " ";
+        //std::cout << iterator.get() << " ";
     }
 
     std::cout << std::endl;
 
-    test_array.insert(2, 10);
+    //test_array.insert(2, 10);
     for (auto array : test_array)
     {
         std::cout << array << " ";

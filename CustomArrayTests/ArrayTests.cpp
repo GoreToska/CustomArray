@@ -14,7 +14,7 @@ TEST(Insert, InsertTest01)
     {
         EXPECT_EQ(test_array[i], i); // 0 1 2 3 4 10 5 6 7
     }
-    
+
     test_array.insert(5, 10);
 
     EXPECT_EQ(test_array[0], 0);
