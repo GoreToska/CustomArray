@@ -1,4 +1,5 @@
 #include <iostream>
+#include <string>
 
 #include "Classes/CustomArray.hpp"
 
@@ -16,10 +17,19 @@ int main()
     {
         //std::cout << iterator.get() << " ";
     }
+    test_array.insert(5, 123);
 
-    std::cout << std::endl;
 
     //test_array.insert(2, 10);
+    for (auto array : test_array)
+    {
+        std::cout << array << " ";
+    }
+    std::cout << std::endl;
+
+
+    test_array.remove(5);
+
     for (auto array : test_array)
     {
         std::cout << array << " ";

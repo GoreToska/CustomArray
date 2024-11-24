@@ -66,15 +66,47 @@ int array<T>::insert(const T& value)
 }
 
 template <typename T>
+int array<T>::insert(const T&& value)
+{
+    capacity_check();
+    assert(capacity_>=size_);
+    new(data_ptr_ + size_) T(std::move(value));
+
+    return size_++;
+}
+
+template <typename T>
 int array<T>::insert(int index, const T& value)
 {
+    std::cout<<"Copy Insert!\n";
+    capacity_check();
     assert(index <= size_);
-    insert(value);
 
-    for (size_t i = index; i < size_; ++i)
+    for (size_t i = size_; i > index; --i)
     {
-        std::swap(data_ptr_[i], data_ptr_[size_ - 1]);
+        new(data_ptr_ + i) T(data_ptr_[i - 1]);
     }
+
+    new(data_ptr_ + index) T(value);
+    ++size_;
+
+    return index;
+}
+
+template <typename T>
+int array<T>::insert(int index, const T&& value)
+{
+    std::cout<<"Move Insert!\n";
+    capacity_check();
+    assert(index <= size_);
+
+    for (size_t i = size_; i > index; --i)
+    {
+        new(data_ptr_ + i) T(data_ptr_[i - 1]);
+    }
+
+    new(data_ptr_ + index) T(std::move(value));
+    ++size_;
 
     return index;
 }
@@ -82,6 +114,7 @@ int array<T>::insert(int index, const T& value)
 template <typename T>
 void array<T>::remove(int index)
 {
+    //TODO: cppref pushback vector
     for (size_t i = index; i < size_ - 1; ++i)
     {
         data_ptr_[i] = std::move(data_ptr_[i + 1]);
@@ -106,9 +139,6 @@ T& array<T>::operator[](int index)
 template <typename T>
 array<T>& array<T>::operator=(const array<T>& other)
 {
-    if (this != &other)
-        return *this;
-
     array<T> temp(other);
     std::swap(capacity_, temp.capacity_);
     std::swap(size_, other.size_);
@@ -157,12 +187,6 @@ template <typename T>
 const T& array<T>::const_iterator::get() const
 {
     return array_[i_];
-}
-
-template <typename T>
-void array<T>::const_iterator::set(const T& value)
-{
-    array_[i_] = value;
 }
 
 template <typename T>
@@ -282,7 +306,7 @@ void array<T>::capacity_check()
     if (size_ < capacity_)
         return;
 
-    capacity_ *= size_change_exponent;
+    capacity_ *= grow_factor;
     T* temp = static_cast<T*>(malloc(capacity_ * sizeof(T)));
     for (size_t i = 0; i < size_; ++i)
     {
@@ -290,6 +314,7 @@ void array<T>::capacity_check()
         (data_ptr_ + i)->~T();
     }
 
+    free(data_ptr_); // это было потеряно
     data_ptr_ = temp;
     temp = nullptr;
 }

@@ -362,3 +362,28 @@ TEST(Destructor)
     }
     EXPECT_NO_THROW();
 }
+
+TEST(String)
+{
+    array<std::string> test_array;
+    std::string hello = "Hello! Inserted";
+    
+    for (int i = 0; i < 8; i++)
+    {
+        test_array.insert("Hello! " + i); // 0 1 2 3 4 5 6 7
+    }
+
+    
+    for (int i = 0; i < 8; i++)
+    {
+        EXPECT_EQ(test_array[i], "Hello! " + i); // 0 1 2 3 4 10 5 6 7
+    }
+
+    test_array.insert(5, std::move(hello));
+    std::cout<<hello;
+    EXPECT_EQ(test_array[5], "Hello! Inserted"); // 0 1 2 3 4 10 5 6 7
+
+    test_array.remove(5);
+
+    
+}

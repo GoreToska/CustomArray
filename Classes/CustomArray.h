@@ -13,7 +13,9 @@ public:
     array<T>& operator=(array<T>&& other) noexcept;
 
     int insert(const T& value);
+    int insert(const T&& value);
     int insert(int index, const T& value);
+    int insert(int index, const T&& value);
     void remove(int index);
     int size() const;
 
@@ -74,7 +76,7 @@ private:
     T* data_ptr_;
 
     const int min_capacity_ = 16;
-    const int size_change_exponent = 2;
+    const int grow_factor = 2;
 
     void capacity_check();
 };
