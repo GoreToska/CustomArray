@@ -1,5 +1,6 @@
 ﻿#include "TestClass.h"
 
+#include <algorithm>
 #include <cstdlib>
 
 test_class::test_class()
@@ -12,7 +13,7 @@ test_class::test_class()
     }
 }
 
-test_class::test_class(const test_class& other)
+test_class::test_class(const test_class& other) noexcept
 {
     numbers_ = static_cast<int*>(malloc(10 * sizeof(int)));
 
@@ -31,4 +32,12 @@ test_class::test_class(test_class&& other) noexcept
 test_class::~test_class()
 {
     free(numbers_);
+}
+
+test_class& test_class::operator=(test_class&& other) noexcept
+{
+    test_class temp(std::move(other));
+    std::swap(numbers_, temp.numbers_);
+
+    return *this;
 }

@@ -384,6 +384,4 @@ TEST(String)
     EXPECT_EQ(test_array[5], "Hello! Inserted"); // 0 1 2 3 4 10 5 6 7
 
     test_array.remove(5);
-
-    
 }

@@ -13,9 +13,9 @@ public:
     array<T>& operator=(array<T>&& other) noexcept;
 
     int insert(const T& value);
-    int insert(const T&& value);
+    int insert(T&& value);
     int insert(int index, const T& value);
-    int insert(int index, const T&& value);
+    int insert(int index, T&& value);
     void remove(int index);
     int size() const;
 
@@ -27,7 +27,6 @@ public:
     public:
         const_iterator(const array<T>& array, bool is_reverse);
         const T& get() const;
-        void set(const T& value);
         void next();
         bool has_next() const;
 

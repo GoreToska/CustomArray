@@ -66,7 +66,7 @@ int array<T>::insert(const T& value)
 }
 
 template <typename T>
-int array<T>::insert(const T&& value)
+int array<T>::insert(T&& value)
 {
     capacity_check();
     assert(capacity_>=size_);
@@ -78,13 +78,14 @@ int array<T>::insert(const T&& value)
 template <typename T>
 int array<T>::insert(int index, const T& value)
 {
-    std::cout<<"Copy Insert!\n";
+    std::cout << "Copy Insert!\n";
     capacity_check();
     assert(index <= size_);
 
     for (size_t i = size_; i > index; --i)
     {
         new(data_ptr_ + i) T(data_ptr_[i - 1]);
+        data_ptr_[i - 1].~T();
     }
 
     new(data_ptr_ + index) T(value);
@@ -94,15 +95,16 @@ int array<T>::insert(int index, const T& value)
 }
 
 template <typename T>
-int array<T>::insert(int index, const T&& value)
+int array<T>::insert(int index, T&& value)
 {
-    std::cout<<"Move Insert!\n";
+    std::cout << "Move Insert!\n";
     capacity_check();
     assert(index <= size_);
 
     for (size_t i = size_; i > index; --i)
     {
-        new(data_ptr_ + i) T(data_ptr_[i - 1]);
+        new(data_ptr_ + i) T(std::move(data_ptr_[i - 1]));
+        data_ptr_[i - 1].~T();
     }
 
     new(data_ptr_ + index) T(std::move(value));
@@ -114,10 +116,21 @@ int array<T>::insert(int index, const T&& value)
 template <typename T>
 void array<T>::remove(int index)
 {
-    //TODO: cppref pushback vector
-    for (size_t i = index; i < size_ - 1; ++i)
+    if (std::is_move_constructible_v<T>)
     {
-        data_ptr_[i] = std::move(data_ptr_[i + 1]);
+        for (size_t i = index; i < size_ - 1; ++i)
+        {
+            new(data_ptr_ + i)T(std::move(data_ptr_[i + 1]));
+            data_ptr_[i - 1].~T();
+        }
+    }
+    else
+    {
+        for (size_t i = index; i < size_ - 1; ++i)
+        {
+            new(data_ptr_ + i)T(data_ptr_[i + 1]);
+            data_ptr_[i - 1].~T();
+        }
     }
 
     data_ptr_[size_ - 1].~T();
@@ -308,6 +321,7 @@ void array<T>::capacity_check()
 
     capacity_ *= grow_factor;
     T* temp = static_cast<T*>(malloc(capacity_ * sizeof(T)));
+
     for (size_t i = 0; i < size_; ++i)
     {
         new(temp + i)T(std::move(data_ptr_[i]));
