@@ -23,21 +23,21 @@ test_class::test_class(const test_class& other) noexcept
     }
 }
 
-test_class::test_class(test_class&& other) noexcept
+/*test_class::test_class(test_class&& other) noexcept
 {
     numbers_ = other.numbers_;
     other.numbers_ = nullptr;
-}
+}*/
 
 test_class::~test_class()
 {
     free(numbers_);
 }
 
-test_class& test_class::operator=(test_class&& other) noexcept
+/*test_class& test_class::operator=(test_class&& other) noexcept
 {
     test_class temp(std::move(other));
     std::swap(numbers_, temp.numbers_);
 
     return *this;
-}
+}*/

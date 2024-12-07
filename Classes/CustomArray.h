@@ -15,7 +15,6 @@ public:
     int insert(const T& value);
     int insert(T&& value);
     int insert(int index, const T& value);
-    int insert(int index, T&& value);
     void remove(int index);
     int size() const;
 

@@ -34,7 +34,7 @@ array<T>::array(const array& other)
 }
 
 template <typename T>
-array<T>::array(array&& other) noexcept // move constructor
+array<T>::array(array&& other) noexcept
 {
     size_ = other.size_;
     capacity_ = other.capacity_;
@@ -78,13 +78,12 @@ int array<T>::insert(T&& value)
 template <typename T>
 int array<T>::insert(int index, const T& value)
 {
-    std::cout << "Copy Insert!\n";
     capacity_check();
     assert(index <= size_);
 
     for (size_t i = size_; i > index; --i)
     {
-        new(data_ptr_ + i) T(data_ptr_[i - 1]);
+        new(data_ptr_ + i) T(std::move(data_ptr_[i - 1]));
         data_ptr_[i - 1].~T();
     }
 
@@ -95,42 +94,12 @@ int array<T>::insert(int index, const T& value)
 }
 
 template <typename T>
-int array<T>::insert(int index, T&& value)
-{
-    std::cout << "Move Insert!\n";
-    capacity_check();
-    assert(index <= size_);
-
-    for (size_t i = size_; i > index; --i)
-    {
-        new(data_ptr_ + i) T(std::move(data_ptr_[i - 1]));
-        data_ptr_[i - 1].~T();
-    }
-
-    new(data_ptr_ + index) T(std::move(value));
-    ++size_;
-
-    return index;
-}
-
-template <typename T>
 void array<T>::remove(int index)
 {
-    if (std::is_move_constructible_v<T>)
+    for (size_t i = index; i < size_ - 1; ++i)
     {
-        for (size_t i = index; i < size_ - 1; ++i)
-        {
-            new(data_ptr_ + i)T(std::move(data_ptr_[i + 1]));
-            data_ptr_[i - 1].~T();
-        }
-    }
-    else
-    {
-        for (size_t i = index; i < size_ - 1; ++i)
-        {
-            new(data_ptr_ + i)T(data_ptr_[i + 1]);
-            data_ptr_[i - 1].~T();
-        }
+        new(data_ptr_ + i)T(std::move(data_ptr_[i + 1]));
+        data_ptr_[i - 1].~T();
     }
 
     data_ptr_[size_ - 1].~T();
@@ -328,7 +297,7 @@ void array<T>::capacity_check()
         (data_ptr_ + i)->~T();
     }
 
-    free(data_ptr_); // это было потеряно
+    free(data_ptr_);
     data_ptr_ = temp;
     temp = nullptr;
 }
